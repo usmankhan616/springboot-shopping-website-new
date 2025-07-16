@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Product - Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 60px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h4 {
+        font-weight: 600;
+    }
+
+    .btn-success {
+        font-weight: 500;
+        font-size: 1.1rem;
+        padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="form-container">
+    <h4 class="mb-4 text-primary text-center">Add New Product</h4>
+
+    <form action="/admin/products/save" method="post" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select name="category" id="category" class="form-select" required>
+          <option value="electronics">Electronics</option>
+          <option value="books">Books</option>
+          <option value="clothing">Clothing</option>
+          <option value="home-appliances">Home Appliances</option>
+          <option value="sports">Sports</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Product Image</label>
+        <input type="file" name="image" id="image" accept="image/*" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Product Name</label>
+        <input type="text" name="name" id="name" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" id="description" rows="3" class="form-control" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price (₹)</label>
+        <input type="number" name="price" id="price" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Save Product</button>
+    </form>
+  </div>
+</div>
+
+<!-- Bootstrap JS (optional, for components like modals, dropdowns, etc.) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
