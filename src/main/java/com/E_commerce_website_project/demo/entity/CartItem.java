@@ -1,5 +1,6 @@
 package com.E_commerce_website_project.demo.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Transient;
 
 public class CartItem {
