@@ -1,14 +1,12 @@
-# Use official Java 17 runtime as the base image
-FROM eclipse-temurin:17-jdk-alpine
-
-# Set working directory inside container
+# ---- Stage 1: Build the application ----
+FROM maven:3.9.6-eclipse-temurin-21-alpine AS build
 WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Copy built jar to container
-COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose port 8080
+# ---- Stage 2: Run the application ----
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Run the jar
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
